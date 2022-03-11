@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Creating a server with Node.js</title>
+</head>
+<body>
+  <h1>Creating a server with Node.js</h1>
+  <div>
+    <p>Hello, I'm a Node.js server!</p>
+  </div>
+</body>
+</html>
+---------
+app.js
+
+var http = require("http");
+var fs = require("fs");
+
+http.createServer(function(req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  var html = fs.readFileSync(__dirname + "/index.html", 'utf8');
+
+  res.end(html);
+}).listen(3000);
+
+console.log("Listening on port 3000... ");
+
